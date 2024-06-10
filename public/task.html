@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Tarea</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <div id="sidebar">
+            <img src="https://iberlum.es/wp-content/uploads/2022/05/logo-cerramientos-abatibles.jpg" alt="Logo" width="200">
+            <ul>
+                <li><a href="index.html" id="menu-home">Inicio</a></li>
+                <li><a href="index.html#menu-calendar" id="menu-calendar">Calendario</a></li>
+                <li><a href="index.html#menu-new-task" id="menu-new-task">Gestión de Trabajos</a></li>
+                <li><a href="index.html#menu-search" id="menu-search">Buscar Tareas</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="task-details-container" class="content-section">
+                <h2>Detalle de Tarea</h2>
+                <p id="task-details"></p>
+                <form id="update-status-form">
+                    <label for="task-status">Estado:</label>
+                    <select id="task-status">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="asignada">Asignada</option>
+                        <option value="finalizada">Finalizada</option>
+                    </select>
+                    <button type="submit">Actualizar Estado</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="task.js"></script>
+</body>
+</html>

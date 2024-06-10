@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Tarea</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <div id="sidebar">
+            <img src="https://iberlum.es/wp-content/uploads/2022/05/logo-cerramientos-abatibles.jpg" alt="Logo" width="200">
+            <ul>
+                <li><a href="index.html" id="menu-home">Inicio</a></li>
+                <li><a href="index.html#menu-calendar" id="menu-calendar">Calendario</a></li>
+                <li><a href="index.html#menu-new-task" id="menu-new-task">Gestión de Trabajos</a></li>
+                <li><a href="index.html#menu-search" id="menu-search">Buscar Tareas</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <h2>Crear Nueva Tarea</h2>
+            <form id="new-task-form">
+                <label for="client-name">Nombre Completo del Cliente:</label>
+                <input type="text" id="client-name" name="client-name" required>
+                
+                <label for="client-phone">Teléfono:</label>
+                <input type="text" id="client-phone" name="client-phone" required>
+                
+                <label for="client-email">Email:</label>
+                <input type="email" id="client-email" name="client-email" required>
+                
+                <label for="client-address">Dirección:</label>
+                <input type="text" id="client-address" name="client-address" required>
+                
+                <label for="task-type">Tipo de Tarea:</label>
+                <select id="task-type" name="task-type" required></select>
+                
+                <label for="task-date">Fecha de la Tarea:</label>
+                <input type="date" id="task-date" name="task-date" required>
+
+                <label for="task-duration">Duración (horas):</label>
+                <input type="number" id="task-duration" name="task-duration" min="1" required>
+
+                <label for="assigned-users">Asignar a Usuarios:</label>
+                <select id="assigned-users" name="assigned-users" multiple required></select>
+                
+                <button type="submit">Crear Tarea</button>
+            </form>
+        </div>
+    </div>
+    <script src="new_task.js"></script>
+</body>
+</html>

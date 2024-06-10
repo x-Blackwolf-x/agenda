@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Asignaciones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <div id="sidebar">
+            <img src="https://iberlum.es/wp-content/uploads/2022/05/logo-cerramientos-abatibles.jpg" alt="Logo" width="200">
+            <ul>
+                <li><a href="#" id="menu-welcome">Bienvenida</a></li>
+                <li><a href="#" id="menu-login" style="display: none;">Iniciar Sesión</a></li>
+                <li><a href="#" id="menu-calendar" style="display: none;">Calendario</a></li>
+                <li><a href="#" id="menu-new-task" style="display: none;">Gestión de Trabajos</a></li>
+                <li><a href="#" id="menu-search" style="display: none;">Buscar Tareas</a></li>
+                <li><a href="#" id="menu-admin" style="display: none;">Administración</a></li>
+                <li><a href="#" id="menu-settings" style="display: none;">Configuración</a></li>
+                <li><a href="#" id="menu-logout" style="display: none;">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="profile-container" style="display: none;">
+                <div class="dropdown">
+                    <button id="profile-menu-button">⋮</button>
+                    <div class="dropdown-content" id="profile-menu">
+                        <a href="#" id="view-profile">Perfil</a>
+                        <a href="#" id="change-password">Cambiar Contraseña</a>
+                    </div>
+                </div>
+                <img id="profile-picture" src="default-profile.png" alt="Profile Picture" width="30" height="30">
+            </div>
+            <div id="login-container" class="content-section">
+                <h2>Iniciar Sesión</h2>
+                <form id="login-form">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Ingresar</button>
+                </form>
+            </div>
+            <div id="welcome-container" class="content-section" style="display:none;">
+                <h2>Bienvenida, <span id="user-name"></span></h2>
+                <p id="current-date"></p>
+                <h3>Últimas tareas creadas:</h3>
+                <ul id="recent-tasks"></ul>
+                <h3>Tareas finalizadas:</h3>
+                <ul id="completed-tasks"></ul>
+            </div>
+            <div id="calendar-container" class="content-section" style="display:none;">
+                <h2>Calendario de Asignaciones</h2>
+                <div id="calendar-controls">
+                    <button id="prev-month">Anterior</button>
+                    <span id="calendar-month-year"></span>
+                    <button id="next-month">Siguiente</button>
+                </div>
+                <div id="calendar"></div>
+            </div>
+            <div id="new-task-container" class="content-section" style="display:none;">
+                <h2>Gestión de Trabajos</h2>
+                <form id="new-task-form">
+                    <label for="client-name">Nombre Completo del Cliente:</label>
+                    <input type="text" id="client-name" name="client-name" required>
+                    
+                    <label for="client-phone">Teléfono:</label>
+                    <input type="text" id="client-phone" name="client-phone" required>
+                    
+                    <label for="client-email">Email:</label>
+                    <input type="email" id="client-email" name="client-email" required>
+                    
+                    <label for="client-address">Dirección:</label>
+                    <input type="text" id="client-address" name="client-address" required>
+                    
+                    <label for="task-type">Tipo de Tarea:</label>
+                    <select id="task-type" name="task-type" required></select>
+                    
+                    <label for="task-date">Fecha de la Tarea:</label>
+                    <input type="date" id="task-date" name="task-date" required>
+
+                    <label for="task-duration">Duración (horas):</label>
+                    <input type="number" id="task-duration" name="task-duration" min="1" required>
+
+                    <label for="assigned-users">Asignar a Usuarios:</label>
+                    <select id="assigned-users" name="assigned-users" multiple required></select>
+                    
+                    <button type="submit">Crear Tarea</button>
+                </form>
+                <h3>Trabajos Creados:</h3>
+                <ul id="task-list"></ul>
+            </div>
+            <div id="search-container" class="content-section" style="display:none;">
+                <h2>Buscar Tareas</h2>
+                <form id="search-form">
+                    <label for="search-name">Nombre:</label>
+                    <input type="text" id="search-name" name="search-name">
+                    
+                    <label for="search-address">Dirección:</label>
+                    <input type="text" id="search-address" name="search-address">
+                    
+                    <label for="search-phone">Teléfono:</label>
+                    <input type="text" id="search-phone" name="search-phone">
+                    
+                    <label for="search-email">Email:</label>
+                    <input type="email" id="search-email" name="search-email">
+                    
+                    <label for="search-start-date">Fecha Inicio:</label>
+                    <input type="date" id="search-start-date" name="search-start-date">
+                    
+                    <label for="search-end-date">Fecha Fin:</label>
+                    <input type="date" id="search-end-date" name="search-end-date">
+                    
+                    <button type="submit">Buscar</button>
+                </form>
+                <h3>Resultados de la Búsqueda:</h3>
+                <ul id="search-results"></ul>
+            </div>
+            <div id="admin-container" class="content-section" style="display:none;">
+                <h2>Crear Nuevo Usuario</h2>
+                <form id="create-user-form">
+                    <label for="create-username">Nuevo Usuario:</label>
+                    <input type="text" id="create-username" name="create-username" required>
+                    <label for="create-password">Contraseña:</label>
+                    <input type="password" id="create-password" name="create-password" required>
+                    <label for="create-role">Rol:</label>
+                    <select id="create-role" name="create-role"></select>
+                    <button type="submit">Crear Usuario</button>
+                </form>
+                <hr>
+                <h2>Gestionar Roles de Usuarios</h2>
+                <form id="role-form">
+                    <label for="target-username">Usuario:</label>
+                    <input type="text" id="target-username" name="target-username" required>
+                    <label for="role">Nuevo Rol:</label>
+                    <select id="role" name="role"></select>
+                    <button type="submit">Asignar Rol</button>
+                </form>
+                <h2>Crear Nuevo Rol</h2>
+                <form id="create-role-form">
+                    <label for="role-name">Nombre del Rol:</label>
+                    <input type="text" id="role-name" name="role-name" required>
+                    <label for="permissions">Permisos:</label>
+                    <div id="permissions"></div>
+                    <button type="submit">Crear Rol</button>
+                </form>
+                <h2>Eliminar Rol</h2>
+                <form id="delete-role-form">
+                    <label for="delete-role">Rol a eliminar:</label>
+                    <select id="delete-role" name="delete-role"></select>
+                    <button type="submit">Eliminar Rol</button>
+                </form>
+            </div>
+            <div id="settings-container" class="content-section" style="display:none;">
+                <h2>Configuración del Calendario</h2>
+                <form id="task-type-form">
+                    <label for="new-task-type">Nuevo Tipo de Tarea:</label>
+                    <input type="text" id="new-task-type" name="new-task-type" required>
+                    <label for="task-color">Color:</label>
+                    <input type="color" id="task-color" name="task-color" required>
+                    <button type="submit">Agregar Tipo de Tarea</button>
+                </form>
+                <form id="settings-form">
+                    <div id="task-colors"></div>
+                    <button type="submit">Guardar Configuración</button>
+                </form>
+                <h2>Eliminar Tipo de Tarea</h2>
+                <form id="delete-task-type-form">
+                    <label for="delete-task-type">Tipo de tarea a eliminar:</label>
+                    <select id="delete-task-type" name="delete-task-type"></select>
+                    <button type="submit">Eliminar Tipo de Tarea</button>
+                </form>
+            </div>
+            <div id="profile-edit-container" class="content-section" style="display: none;">
+                <h2>Editar Perfil</h2>
+                <form id="profile-edit-form">
+                    <label for="profile-name">Nombre:</label>
+                    <input type="text" id="profile-name" name="profile-name" required>
+                    <label for="profile-surname">Apellidos:</label>
+                    <input type="text" id="profile-surname" name="profile-surname" required>
+                    <label for="profile-email">Email:</label>
+                    <input type="email" id="profile-email" name="profile-email" required>
+                    <label for="profile-phone">Teléfono:</label>
+                    <input type="text" id="profile-phone" name="profile-phone" required>
+                    <label for="profile-picture-upload">Foto de Perfil:</label>
+                    <input type="file" id="profile-picture-upload" name="profile-picture-upload" accept="image/*">
+                    <label for="profile-password">Nueva Contraseña:</label>
+                    <input type="password" id="profile-password" name="profile-password">
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+            </div>
+            <div id="change-password-container" class="content-section" style="display: none;">
+                <h2>Cambiar Contraseña</h2>
+                <form id="change-password-form">
+                    <label for="old-password">Contraseña Actual:</label>
+                    <input type="password" id="old-password" name="old-password" required>
+                    <label for="new-password">Nueva Contraseña:</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    <button type="submit">Cambiar Contraseña</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#app-container {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    background-color: #dc143c; /* Color carmesí */
+    color: white;
+    width: 250px;
+    height: 100vh; /* Ocupa todo el margen izquierdo */
+    padding: 20px;
+    text-align: center;
+}
+
+#sidebar img {
+    display: block;
+    margin: 0 auto;
+}
+
+#sidebar ul {
+    padding: 0;
+    list-style: none;
+    text-align: left; /* Alinear el texto del menú a la izquierda */
+}
+
+#sidebar ul li {
+    margin: 10px 0;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 5px 0;
+}
+
+#content {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section h2 {
+    margin-top: 0;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px;
+    background-color: #ccc;
+}
+
+#calendar div {
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#calendar .header {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+#calendar .day-cell {
+    min-height: 80px;
+}
+
+.assignment {
+    margin-top: 5px;
+    padding: 2px;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+
+#profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#profile-container img {
+    border-radius: 50%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select, form button {
+    display: block;
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
